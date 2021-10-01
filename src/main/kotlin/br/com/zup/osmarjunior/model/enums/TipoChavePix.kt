@@ -1,11 +1,12 @@
 package br.com.zup.osmarjunior.model.enums
 
+import br.com.zup.osmarjunior.TipoDeChave
 import org.hibernate.validator.internal.constraintvalidators.hv.EmailValidator
 import org.hibernate.validator.internal.constraintvalidators.hv.br.CNPJValidator
 import org.hibernate.validator.internal.constraintvalidators.hv.br.CPFValidator
 
-enum class TipoChavePix {
-    CPF {
+enum class TipoChavePix(val grpcTipoChave: TipoDeChave) {
+    CPF(TipoDeChave.CPF) {
         override fun valida(chave: String?): Boolean {
             if (chave.isNullOrBlank()) return false
 
@@ -18,7 +19,7 @@ enum class TipoChavePix {
         }
     },
 
-    CNPJ {
+    CNPJ(TipoDeChave.CNPJ) {
         override fun valida(chave: String?): Boolean {
             if (chave.isNullOrBlank()) return false
 
@@ -32,7 +33,7 @@ enum class TipoChavePix {
 
     },
 
-    EMAIL {
+    EMAIL(TipoDeChave.EMAIL) {
         override fun valida(chave: String?): Boolean {
             if (chave.isNullOrBlank()) return false
 
@@ -43,7 +44,7 @@ enum class TipoChavePix {
         }
     },
 
-    CELULAR {
+    CELULAR(TipoDeChave.CELULAR) {
         override fun valida(chave: String?): Boolean {
 
             if (chave.isNullOrBlank()) return false
@@ -51,7 +52,7 @@ enum class TipoChavePix {
         }
     },
 
-    ALEATORIA {
+    ALEATORIA(TipoDeChave.ALEATORIA) {
         override fun valida(chave: String?): Boolean {
             return chave.isNullOrBlank()
         }

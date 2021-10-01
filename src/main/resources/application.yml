@@ -1,15 +1,17 @@
 micronaut:
   application:
     name: keyManagerRest
+  server:
+    port: ${SERVER_PORT:8080}
 
-datasources:
-  default:
-    url: ${DB_URL:`jdbc:postgresql://localhost:5432/km_rest_pix`}
-    driverClassName: org.postgresql.Driver
-    username: ${DB_USER:postgres}
-    password: ${DB_PASSWORD:postgres}
-    dialect: ${DB_DIALECT:POSTGRES}
-jpa.default.properties.hibernate.hbm2ddl.auto: ${DB_DDL:update}
+#datasources:
+#  default:
+#    url: ${DB_URL:`jdbc:postgresql://localhost:5432/km_rest_pix`}
+#    driverClassName: org.postgresql.Driver
+#    username: ${DB_USER:postgres}
+#    password: ${DB_PASSWORD:postgres}
+#    dialect: ${DB_DIALECT:POSTGRES}
+#jpa.default.properties.hibernate.hbm2ddl.auto: ${DB_DDL:update}
 
 grpc:
   client:
@@ -17,6 +19,6 @@ grpc:
     max_retry_attempts: 10
   channels:
     kmgrpc:
-      address: 'localhost:50051'
+      address: '${KEY_MANAGER_HOST:localhost}:${KEY_MANAGER_PORT:50051}'
       plaintext: true
       max_retry_attempts: 10
