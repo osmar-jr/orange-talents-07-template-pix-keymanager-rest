@@ -8,15 +8,11 @@ import io.micronaut.grpc.annotation.GrpcChannel
 import jakarta.inject.Singleton
 
 @Factory
-class GrpcClientFactory {
+class GrpcClientFactory(@GrpcChannel("kmgrpc") val channel: ManagedChannel) {
 
     @Singleton
-    fun registraPixBlockingStub(@GrpcChannel("kmgrpc") channel: ManagedChannel): KeyManagerGrpcServiceGrpc.KeyManagerGrpcServiceBlockingStub? {
-        return KeyManagerGrpcServiceGrpc.newBlockingStub(channel)
-    }
+    fun registraPixBlockingStub() = KeyManagerGrpcServiceGrpc.newBlockingStub(channel)
 
     @Singleton
-    fun consultaPixBlockingStub(@GrpcChannel("kmgrpc") channel: ManagedChannel): KeyManagerConsultaServiceGrpc.KeyManagerConsultaServiceBlockingStub? {
-        return KeyManagerConsultaServiceGrpc.newBlockingStub(channel)
-    }
+    fun consultaPixBlockingStub() = KeyManagerConsultaServiceGrpc.newBlockingStub(channel)
 }

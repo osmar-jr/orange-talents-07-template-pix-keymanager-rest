@@ -54,7 +54,7 @@ enum class TipoChavePix(val grpcTipoChave: TipoDeChave) {
 
     ALEATORIA(TipoDeChave.ALEATORIA) {
         override fun valida(chave: String?): Boolean {
-            return chave.isNullOrBlank()
+            return true
         }
     };
 

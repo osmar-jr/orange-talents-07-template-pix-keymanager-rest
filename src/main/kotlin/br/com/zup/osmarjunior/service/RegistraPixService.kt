@@ -27,6 +27,7 @@ class RegistraPixService(
 
         val pixGrpcResponse = grpcRegistraClient
             .cadastraChavePix(novoPixRequest.toChavePixGrpcRequest(clienteId))
+
         val pixCriadoGrpcResponse = grpcConsultaClient
             .consultar(pixGrpcResponse.toConsultaChaveGrpcRequest())
 

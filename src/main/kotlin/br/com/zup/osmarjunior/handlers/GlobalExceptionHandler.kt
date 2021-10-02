@@ -30,7 +30,8 @@ class GlobalExceptionHandler : ExceptionHandler<StatusRuntimeException, HttpResp
                 "Não foi possível completar a requisição. Sistema de contas indisponível.")
             else -> {
                 logger.error("Erro inesperado ao consultar o tentar registrar a chave pix.")
-                Pair(HttpStatus.INTERNAL_SERVER_ERROR, "Não foi possível completar a requisição.")
+                Pair(HttpStatus.INTERNAL_SERVER_ERROR,
+                    "Não foi possível completar a requisição. Erro inesperado no sistema.")
             }
         }
 

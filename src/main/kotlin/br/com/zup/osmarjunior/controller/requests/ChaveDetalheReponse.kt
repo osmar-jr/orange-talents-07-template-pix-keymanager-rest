@@ -23,7 +23,7 @@ data class ChaveDetalheReponse(
     @field:Enumerated(EnumType.STRING)
     val tipoDeChave: TipoChavePix,
 
-    @field:JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
+    @field:JsonFormat(shape = JsonFormat.Shape.STRING)
     val criadoEm: LocalDateTime
 ) {
 
